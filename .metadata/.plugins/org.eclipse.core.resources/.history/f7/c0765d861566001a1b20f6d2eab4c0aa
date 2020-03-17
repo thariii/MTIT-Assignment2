@@ -1,0 +1,73 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="E:\SLIIT\4th year\1st semester\MTIT\Assignments\Assignment 2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Assignment2\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="BuyerServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="getBuyer" qname="ns1:getBuyer" returnQName="ns1:getBuyerReturn" returnType="ns1:Buyer" soapAction="" xmlns:ns1="http://buyer.mtit.com" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:buyerID" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns2:operation>
+  <ns1:operation name="deleteBuyer" qname="ns2:deleteBuyer" returnQName="ns2:deleteBuyerReturn" returnType="xsd:boolean" soapAction="" xmlns:ns2="http://buyer.mtit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:buyerId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="addBuyer" qname="ns3:addBuyer" returnQName="ns3:addBuyerReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://buyer.mtit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:b" type="ns3:Buyer"/>
+  </ns1:operation>
+  <ns1:operation name="getAllBuyers" qname="ns4:getAllBuyers" returnQName="ns4:getAllBuyersReturn" returnType="ns4:Buyer" soapAction="" xmlns:ns4="http://buyer.mtit.com"/>
+  <ns1:parameter name="allowedMethods" value="deleteBuyer getBuyer addBuyer getAllBuyers"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="BuyerServiceImpl"/>
+  <ns1:parameter name="className" value="com.mtit.buyer.BuyerServiceImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="BuyerServiceImpl"/>
+  <ns1:parameter name="schemaQualified" value="http://buyer.mtit.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://buyer.mtit.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="BuyerServiceImplService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:Buyer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.mtit.buyer.Buyer" xmlns:ns5="http://buyer.mtit.com"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

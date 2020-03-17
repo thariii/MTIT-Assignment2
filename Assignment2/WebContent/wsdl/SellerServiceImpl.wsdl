@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Seller.mtit.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Seller.mtit.com" xmlns:intf="http://Seller.mtit.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Seller.mtit.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="addSeller">
+    <complexType>
+     <sequence>
+      <element name="s" type="impl:Seller"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Seller">
+    <sequence>
+     <element name="company" nillable="true" type="xsd:string"/>
+     <element name="country" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="phone" nillable="true" type="xsd:string"/>
+     <element name="sellerId" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="addSellerResponse">
+    <complexType>
+     <sequence>
+      <element name="addSellerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteSeller">
+    <complexType>
+     <sequence>
+      <element name="sellerId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteSellerResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteSellerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllSellers">
+    <complexType/>
+   </element>
+   <element name="getAllSellersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllSellersReturn" type="impl:Seller"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSeller">
+    <complexType>
+     <sequence>
+      <element name="sellerId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSellerResponse">
+    <complexType>
+     <sequence>
+      <element name="getSellerReturn" type="impl:Seller"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="deleteSellerRequest">
+
+      <wsdl:part element="impl:deleteSeller" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllSellersRequest">
+
+      <wsdl:part element="impl:getAllSellers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addSellerRequest">
+
+      <wsdl:part element="impl:addSeller" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSellerRequest">
+
+      <wsdl:part element="impl:getSeller" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteSellerResponse">
+
+      <wsdl:part element="impl:deleteSellerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addSellerResponse">
+
+      <wsdl:part element="impl:addSellerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllSellersResponse">
+
+      <wsdl:part element="impl:getAllSellersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSellerResponse">
+
+      <wsdl:part element="impl:getSellerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SellerServiceImpl">
+
+      <wsdl:operation name="addSeller">
+
+         <wsdl:input message="impl:addSellerRequest" name="addSellerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addSellerResponse" name="addSellerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteSeller">
+
+         <wsdl:input message="impl:deleteSellerRequest" name="deleteSellerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteSellerResponse" name="deleteSellerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllSellers">
+
+         <wsdl:input message="impl:getAllSellersRequest" name="getAllSellersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllSellersResponse" name="getAllSellersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSeller">
+
+         <wsdl:input message="impl:getSellerRequest" name="getSellerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getSellerResponse" name="getSellerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SellerServiceImplSoapBinding" type="impl:SellerServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addSeller">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addSellerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addSellerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteSeller">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteSellerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteSellerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllSellers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllSellersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllSellersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSeller">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSellerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSellerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SellerServiceImplService">
+
+      <wsdl:port binding="impl:SellerServiceImplSoapBinding" name="SellerServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/Assignment2/services/SellerServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

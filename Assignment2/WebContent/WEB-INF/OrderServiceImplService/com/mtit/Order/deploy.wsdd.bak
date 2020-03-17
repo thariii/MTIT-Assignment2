@@ -1,0 +1,45 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from OrderServiceImplService WSDL service -->
+
+  <service name="OrderServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Order.mtit.com"/>
+      <parameter name="wsdlServiceElement" value="OrderServiceImplService"/>
+      <parameter name="schemaQualified" value="http://Order.mtit.com"/>
+      <parameter name="wsdlServicePort" value="OrderServiceImpl"/>
+      <parameter name="className" value="com.mtit.Order.OrderServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="OrderServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getOrder" qname="operNS:getOrder" xmlns:operNS="http://Order.mtit.com" returnQName="retNS:getOrderReturn" xmlns:retNS="http://Order.mtit.com" returnType="rtns:Order" xmlns:rtns="http://Order.mtit.com" soapAction="" >
+        <parameter qname="pns:orderId" xmlns:pns="http://Order.mtit.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addOrder" qname="operNS:addOrder" xmlns:operNS="http://Order.mtit.com" returnQName="retNS:addOrderReturn" xmlns:retNS="http://Order.mtit.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:o" xmlns:pns="http://Order.mtit.com" type="tns:Order" xmlns:tns="http://Order.mtit.com"/>
+      </operation>
+      <operation name="deleteOrder" qname="operNS:deleteOrder" xmlns:operNS="http://Order.mtit.com" returnQName="retNS:deleteOrderReturn" xmlns:retNS="http://Order.mtit.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:orderId" xmlns:pns="http://Order.mtit.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAllOrders" qname="operNS:getAllOrders" xmlns:operNS="http://Order.mtit.com" returnQName="retNS:getAllOrdersReturn" xmlns:retNS="http://Order.mtit.com" returnType="rtns:Order" xmlns:rtns="http://Order.mtit.com" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getOrder addOrder deleteOrder getAllOrders"/>
+
+      <typeMapping
+        xmlns:ns="http://Order.mtit.com"
+        qname="ns:Order"
+        type="java:com.mtit.Order.Order"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

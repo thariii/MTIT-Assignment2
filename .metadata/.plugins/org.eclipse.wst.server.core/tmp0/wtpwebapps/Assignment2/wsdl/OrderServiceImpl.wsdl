@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Order.mtit.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Order.mtit.com" xmlns:intf="http://Order.mtit.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Order.mtit.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getOrder">
+    <complexType>
+     <sequence>
+      <element name="orderId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOrderResponse">
+    <complexType>
+     <sequence>
+      <element name="getOrderReturn" type="impl:Order"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Order">
+    <sequence>
+     <element name="buyerId" type="xsd:int"/>
+     <element name="date" nillable="true" type="xsd:string"/>
+     <element name="orderId" type="xsd:int"/>
+     <element name="productId" type="xsd:int"/>
+     <element name="quantity" type="xsd:int"/>
+     <element name="sellerId" type="xsd:int"/>
+     <element name="totalPrice" type="xsd:float"/>
+    </sequence>
+   </complexType>
+   <element name="addOrder">
+    <complexType>
+     <sequence>
+      <element name="o" type="impl:Order"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addOrderResponse">
+    <complexType>
+     <sequence>
+      <element name="addOrderReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteOrder">
+    <complexType>
+     <sequence>
+      <element name="orderId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteOrderResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteOrderReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllOrders">
+    <complexType/>
+   </element>
+   <element name="getAllOrdersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllOrdersReturn" type="impl:Order"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getAllOrdersResponse">
+
+      <wsdl:part element="impl:getAllOrdersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrderRequest">
+
+      <wsdl:part element="impl:getOrder" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addOrderRequest">
+
+      <wsdl:part element="impl:addOrder" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrderResponse">
+
+      <wsdl:part element="impl:getOrderResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addOrderResponse">
+
+      <wsdl:part element="impl:addOrderResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllOrdersRequest">
+
+      <wsdl:part element="impl:getAllOrders" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteOrderRequest">
+
+      <wsdl:part element="impl:deleteOrder" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteOrderResponse">
+
+      <wsdl:part element="impl:deleteOrderResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OrderServiceImpl">
+
+      <wsdl:operation name="getOrder">
+
+         <wsdl:input message="impl:getOrderRequest" name="getOrderRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getOrderResponse" name="getOrderResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addOrder">
+
+         <wsdl:input message="impl:addOrderRequest" name="addOrderRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addOrderResponse" name="addOrderResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteOrder">
+
+         <wsdl:input message="impl:deleteOrderRequest" name="deleteOrderRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteOrderResponse" name="deleteOrderResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllOrders">
+
+         <wsdl:input message="impl:getAllOrdersRequest" name="getAllOrdersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllOrdersResponse" name="getAllOrdersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OrderServiceImplSoapBinding" type="impl:OrderServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getOrder">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOrderRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOrderResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addOrder">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addOrderRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addOrderResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteOrder">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteOrderRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteOrderResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllOrders">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllOrdersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllOrdersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OrderServiceImplService">
+
+      <wsdl:port binding="impl:OrderServiceImplSoapBinding" name="OrderServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/Assignment2/services/OrderServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

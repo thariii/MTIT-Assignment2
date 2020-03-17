@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.mtit.buyer.BuyerService"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="com.mtit.buyer.Buyer"/>
+<fullyQualifiedTypeName name="com.mtit.Seller.SellerService"/>
+<fullyQualifiedTypeName name="com.mtit.Seller.Seller"/>
+<fullyQualifiedTypeName name="com.mtit.Product.ProductService"/>
+<fullyQualifiedTypeName name="com.mtit.Product.Product"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="com.mtit.Order.OrderService"/>
+<fullyQualifiedTypeName name="com.mtit.Order.Order"/>
+</qualifiedTypeNameHistroy>

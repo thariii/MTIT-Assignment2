@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BuyerServiceImplService WSDL service -->
+
+  <service name="BuyerServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://buyer.mtit.com"/>
+      <parameter name="wsdlServiceElement" value="BuyerServiceImplService"/>
+      <parameter name="schemaQualified" value="http://buyer.mtit.com"/>
+      <parameter name="wsdlServicePort" value="BuyerServiceImpl"/>
+      <parameter name="className" value="com.mtit.buyer.BuyerServiceImpl"/>
+      <parameter name="wsdlPortType" value="BuyerServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://buyer.mtit.com" xmlns:retNS="http://buyer.mtit.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addBuyer" qname="operNS:addBuyer" returnQName="retNS:addBuyerReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://buyer.mtit.com" xmlns:tns="http://buyer.mtit.com" qname="pns:b" type="tns:Buyer"/>
+      </operation>
+      <operation xmlns:operNS="http://buyer.mtit.com" xmlns:retNS="http://buyer.mtit.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteBuyer" qname="operNS:deleteBuyer" returnQName="retNS:deleteBuyerReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://buyer.mtit.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:buyerId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://buyer.mtit.com" xmlns:retNS="http://buyer.mtit.com" xmlns:rtns="http://buyer.mtit.com" name="getBuyer" qname="operNS:getBuyer" returnQName="retNS:getBuyerReturn" returnType="rtns:Buyer" soapAction="">
+        <parameter xmlns:pns="http://buyer.mtit.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:buyerID" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://buyer.mtit.com" xmlns:retNS="http://buyer.mtit.com" xmlns:rtns="http://buyer.mtit.com" name="getAllBuyers" qname="operNS:getAllBuyers" returnQName="retNS:getAllBuyersReturn" returnType="rtns:Buyer" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="deleteBuyer getBuyer addBuyer getAllBuyers"/>
+
+      <typeMapping xmlns:ns="http://buyer.mtit.com" qname="ns:Buyer" type="java:com.mtit.buyer.Buyer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

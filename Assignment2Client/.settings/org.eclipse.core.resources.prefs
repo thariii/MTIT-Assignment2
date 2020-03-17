@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/com/mtit/Product/Product.java=UTF-8
+encoding//src/com/mtit/Product/ProductServiceImpl.java=UTF-8
+encoding//src/com/mtit/Product/ProductServiceImplService.java=UTF-8
+encoding//src/com/mtit/Product/ProductServiceImplServiceLocator.java=UTF-8
+encoding//src/com/mtit/Product/ProductServiceImplSoapBindingStub.java=UTF-8
+encoding//src/com/mtit/Seller/Seller.java=UTF-8
+encoding//src/com/mtit/Seller/SellerServiceImpl.java=UTF-8
+encoding//src/com/mtit/Seller/SellerServiceImplService.java=UTF-8
+encoding//src/com/mtit/Seller/SellerServiceImplServiceLocator.java=UTF-8
+encoding//src/com/mtit/Seller/SellerServiceImplSoapBindingStub.java=UTF-8
+encoding//src/com/mtit/buyer/Buyer.java=UTF-8
+encoding//src/com/mtit/buyer/BuyerServiceImpl.java=UTF-8
+encoding//src/com/mtit/buyer/BuyerServiceImplService.java=UTF-8
+encoding//src/com/mtit/buyer/BuyerServiceImplServiceLocator.java=UTF-8
+encoding//src/com/mtit/buyer/BuyerServiceImplSoapBindingStub.java=UTF-8

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://buyer.mtit.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://buyer.mtit.com" xmlns:intf="http://buyer.mtit.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://buyer.mtit.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="addBuyer">
+    <complexType>
+     <sequence>
+      <element name="b" type="impl:Buyer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Buyer">
+    <sequence>
+     <element name="addressLine1" nillable="true" type="xsd:string"/>
+     <element name="buyerId" type="xsd:int"/>
+     <element name="city" nillable="true" type="xsd:string"/>
+     <element name="country" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="phone" nillable="true" type="xsd:string"/>
+     <element name="zip" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="addBuyerResponse">
+    <complexType>
+     <sequence>
+      <element name="addBuyerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBuyer">
+    <complexType>
+     <sequence>
+      <element name="buyerID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBuyerResponse">
+    <complexType>
+     <sequence>
+      <element name="getBuyerReturn" type="impl:Buyer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllBuyers">
+    <complexType/>
+   </element>
+   <element name="getAllBuyersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllBuyersReturn" type="impl:Buyer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBuyer">
+    <complexType>
+     <sequence>
+      <element name="buyerId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBuyerResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteBuyerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addBuyerResponse">
+
+      <wsdl:part element="impl:addBuyerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBuyerRequest">
+
+      <wsdl:part element="impl:addBuyer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllBuyersRequest">
+
+      <wsdl:part element="impl:getAllBuyers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBuyerRequest">
+
+      <wsdl:part element="impl:deleteBuyer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBuyerResponse">
+
+      <wsdl:part element="impl:getBuyerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBuyerRequest">
+
+      <wsdl:part element="impl:getBuyer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllBuyersResponse">
+
+      <wsdl:part element="impl:getAllBuyersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBuyerResponse">
+
+      <wsdl:part element="impl:deleteBuyerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BuyerServiceImpl">
+
+      <wsdl:operation name="addBuyer">
+
+         <wsdl:input message="impl:addBuyerRequest" name="addBuyerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addBuyerResponse" name="addBuyerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBuyer">
+
+         <wsdl:input message="impl:getBuyerRequest" name="getBuyerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBuyerResponse" name="getBuyerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllBuyers">
+
+         <wsdl:input message="impl:getAllBuyersRequest" name="getAllBuyersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllBuyersResponse" name="getAllBuyersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBuyer">
+
+         <wsdl:input message="impl:deleteBuyerRequest" name="deleteBuyerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteBuyerResponse" name="deleteBuyerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BuyerServiceImplSoapBinding" type="impl:BuyerServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addBuyer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addBuyerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addBuyerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBuyer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBuyerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBuyerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllBuyers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllBuyersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllBuyersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBuyer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteBuyerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteBuyerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BuyerServiceImplService">
+
+      <wsdl:port binding="impl:BuyerServiceImplSoapBinding" name="BuyerServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/Assignment2/services/BuyerServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
